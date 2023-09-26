@@ -1,10 +1,10 @@
 {
-    "imgHeight": 1080,
-    "imgWidth": 1920,
-    "objects": [
+    "version": "4.5.6",
+    "flags": {},
+    "shapes": [
         {
             "label": "SL",
-            "polygon": [
+            "points": [
                 [
                     969.1131498470947,
                     785.9327217125382
@@ -29,7 +29,16 @@
                     1056.880733944954,
                     784.7094801223242
                 ]
-            ]
+            ],
+            "group_id": null,
+            "shape_type": "polygon",
+            "flags": {}
         }
-    ]
+    ],
+    "imagePath": "3a.jpg",
+    "imageData": null,
+    "imageHeight": 1080,
+    "imageWidth": 1920,
+    "vehicle": 1,
+    "camera": 1
 }
