@@ -157,9 +157,9 @@ def main(argv):
 
     labels_dir = args[0]
 
-    #json2labelImg( labels_dir )
+    json2labelImg( labels_dir )
     json2labelImg( labels_dir , "trainIds" )
-    #json2labelImg( labels_dir , "color" )
+    json2labelImg( labels_dir , "color" )
 
 # call the main method
 if __name__ == "__main__":

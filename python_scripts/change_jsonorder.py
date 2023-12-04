@@ -1,3 +1,4 @@
+import json
 
 #!/usr/bin/env python
 # coding: utf-8
@@ -34,9 +35,8 @@ class MyEncoder(json.JSONEncoder):
             return super(MyEncoder, self).default(obj)
 
 
+# 与えられたJSONデータ
 def deal_json(json_file):
-    data_cs = {}
-    objects = []
     num = -1
     num = num + 1
     if not json_file.endswith('.json'):
@@ -46,33 +46,23 @@ def deal_json(json_file):
     with open(json_file) as f:
         print('Generating dataset from:', json_file)
         data = json.load(f)
-        file_name = os.path.basename(json_file)
-        file_name_without_gtFine = file_name.replace('_gtFine_polygons', '')  # 1. '_gtFine_polygons'を削除
-        file_name_org = os.path.splitext(file_name_without_gtFine)[0]  # 拡張子を削除
-        shapes = []
-        for obj in data["objects"]:
-            shape = {
-                "label": obj["label"],
-                "points": obj["polygon"],
-                "group_id": None,
-                "shape_type": "polygon",
-                "flags": {}
-            }
-            shapes.append(shape)
+    # 並べ替える順序（逆順に設定）
+        order = [
+            "straight left arrow",
+            "straight right arrow",
+            "right arrow",
+            "left arrow",
+            "straight arrow",
+            "ego vehicle",
+            "rectification border",
+            "out of roi"
+        ]
 
-        converted_json = {
-            "version": "4.5.6",
-            "flags": {},
-            "shapes": shapes,
-            "imagePath": file_name_org+"_leftImg8bit.png",
-            "imageData": None,
-            "imageHeight": data["imgHeight"],
-            "imageWidth": data["imgWidth"],
-            "vehicle": 1,
-            "camera": 1
-        }
-        data_cs = converted_json
-    return data_cs
+        # objectsを指定された順序で並べ替え
+        data["objects"].sort(key=lambda x: order.index(x['label']) if x['label'] in order else -1)
+
+    return data
+
 
 
 def main():

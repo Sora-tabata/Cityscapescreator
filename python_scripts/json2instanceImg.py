@@ -210,7 +210,7 @@ def process_directory(json_directory, output_directory, encoding="ids"):
 # call the main method
 if __name__ == "__main__":
     # コマンドライン引数の代わりにディレクトリを指定
-    json_directory = "/home/sora/Dataset/Rexroth/labels/val/"  # .json ファイルが格納されているディレクトリ
-    output_directory = "/home/sora/Dataset/Rexroth/labels/val/"  # 出力ファイルを保存するディレクトリ
+    json_directory = "/media/sora/SanDisk/cityscapes_1002/gtFine/train/darmstadt/"  # .json ファイルが格納されているディレクトリ
+    output_directory = "/media/sora/SanDisk/cityscapes_1002/gtFine/train/darmstadt/"  # 出力ファイルを保存するディレクトリ
     process_directory(json_directory, output_directory)
     #main(sys.argv[1:])
